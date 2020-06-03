@@ -36,18 +36,18 @@ public class MenuController {
 		model.addAttribute("menuForm", new MenuForm());
 		return "menus/create.html";
 	}
-//	
-//	@PostMapping("/create")
-//	public String create(@Validated MenuForm menuForm, BindingResult bindingResult Model model) {
-//		if(bindingResult.hasErrors()) {
-//			return "menus/create.html";
-//		}
-//		
-//		Menu menu = new Menu();
-//		menu.setMenuName(menuForm.getMenuName());
-//		menu.setMenuPrice(menuForm.getMenuPrice());
-//		Menu createdMenu = menuService.create(menu);
-//		
-//		return "redirect:/menus/update/" + createdMenu.getMuneId();
-//	}
+	
+	@PostMapping("/create")
+	public String create(@Validated MenuForm menuForm, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "menus/create.html";
+		}
+		Menu menu = new Menu();
+		menu.setMenuName(menuForm.getMenuName());
+		menu.setMenuPrice(menuForm.getMenuPrice());
+		Menu createdMenu = menuService.create(menu);
+		
+		return "redirect:/menus/update/" + createdMenu.getMuneId();
+	}
+
 }
