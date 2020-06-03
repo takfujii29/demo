@@ -1,4 +1,4 @@
 select
 	/*%expand*/*
-from recipes
-where recipeId = /*recipeId*/'a'
+from menus
+where menuId = /*menuId*/'a'
