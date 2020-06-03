@@ -44,10 +44,11 @@ public class MenuController {
 		}
 		Menu menu = new Menu();
 		menu.setMenuName(menuForm.getMenuName());
+		menu.setMenuType(menuForm.getMenuType());
 		menu.setMenuPrice(menuForm.getMenuPrice());
 		Menu createdMenu = menuService.create(menu);
 		
-		return "redirect:/menus/update/" + createdMenu.getMuneId();
+		return "redirect:/menus/update/" + createdMenu.getMenuId();
 	}
 
 }
