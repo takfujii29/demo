@@ -2,6 +2,7 @@ package jp.co.aivick.demo.form;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
 public class MenuForm {
@@ -12,6 +13,7 @@ public class MenuForm {
 	private String menuName;
 	
 	@NotEmpty
+	@Pattern(regexp = "和食|洋食|中華")
 	private String menuType;
 	
 	@Positive
