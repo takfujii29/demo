@@ -53,23 +53,18 @@ public class RecipeController{
 
 		return "redirect:/recipes/update/" + createdRecipe.getRecipeId();
 	}
+
 	
-	@GetMapping("/search")
-	public String showSearch(Model model) {
-		model.addAttribute("recipeForm", new RecipeForm());
-		return "recipes/search.html";
-	}
-	
-	@PostMapping("/serach")
-	public String search(@RequestParam(name="search", required=false) String search, BindingResult bindingResult, Model model) {
-		if (bindingResult.hasErrors()) {
-			return "recipes/search.html";
-		}
-		
-		List<Recipe> recipeList = recipeService.search("search");
-		model.addAttribute("recipeList", recipeList);
-		return "recipes/search.html";
-	}
+//	@GetMapping("/serach")
+//	public String search(@RequestParam String search, BindingResult bindingResult, Model model) {
+//		if (bindingResult.hasErrors()) {
+//			return "recipes/search.html";
+//		}
+//		
+//		List<Recipe> recipeList = recipeService.search(search);
+//		model.addAttribute("recipeList", recipeList);
+//		return "recipes/search.html";
+//	}
 
     @GetMapping("/update/{recipeId}")
     public String showUpdate(@PathVariable("recipeId") String recipeId, Model model) {
