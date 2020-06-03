@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{recipe.update}">メニュー更新</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+
+  <h2 th:text="#{recipe.update}">メニュー更新</h2>
+
+  <form th:action="@{'/recipes/update/' + *{recipeId}}" method="post" th:object="${recipeForm}">
+    <span th:text="#{recipeId}">ID</span>:<span th:text="*{recipeId}">123</span><br/>
+    <span th:text="#{recipeName}">メニュー名</span>: <input type="text" name="name" th:value="*{recipeName}"> <br/>
+    <div th:if="${#fields.hasErrors('recipeName')}" th:errors="*{recipeName}" th:errorclass="err"></div>
+    <button type="submit" th:text="#{update}">更新</button>
+  </form>
+
+</div>
+</body>
+</html>
