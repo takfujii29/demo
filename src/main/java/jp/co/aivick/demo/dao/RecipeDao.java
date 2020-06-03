@@ -20,7 +20,7 @@ public interface RecipeDao {
 	List<Recipe> findAll();
 	
 	@Select
-	List<Recipe> search();
+	List<Recipe> search(String search);
 
 	@Insert
 	int insert(Recipe recipe);
