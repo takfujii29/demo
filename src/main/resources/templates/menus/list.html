@@ -29,15 +29,20 @@
     <tr>
       <th th:text="#{menuId}">メニューID</th>
       <th th:text="#{menuName}">メニュー名</th>
+      <th th:text="#{menuType}">メニューの分類</th>
       <th th:text="#{menuPrice}">メニューカロリー</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="menu : ${munes}" th:object="${menu}">
+    <tr th:each="menu : ${menus}" th:object="${menu}">
       <td th:text="*{menuId}"></td>
       <td th:text="*{menuName}"></td>
+      <td th:text="*{menuType}"></td>
       <td th:text="*{menuPrice}"></td>
+      <td>
+        <a th:href="@{'/menus/update/' + *{menuId}}" th:text="#{update}">更新</a>
+      </td>
     </tr>
     </tbody>
   </table>
