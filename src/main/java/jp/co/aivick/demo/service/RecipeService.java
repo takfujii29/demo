@@ -22,7 +22,7 @@ public class RecipeService {
 	}
 	
 	public List<Recipe> search(String search) {
-		return this.recipeDao.search();
+		return this.recipeDao.search(search);
 	}
 
 	@Transactional
