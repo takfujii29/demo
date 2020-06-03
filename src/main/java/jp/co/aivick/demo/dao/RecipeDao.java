@@ -19,8 +19,6 @@ public interface RecipeDao {
 	@Select
 	List<Recipe> findAll();
 	
-	@Select
-	List<Recipe> search(String search);
 
 	@Insert
 	int insert(Recipe recipe);
