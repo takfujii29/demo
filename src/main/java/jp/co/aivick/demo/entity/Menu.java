@@ -29,7 +29,7 @@ public class Menu {
 		this.menuId = menuId;
 	}
 	
-	public Integer getMuneId() {
+	public Integer getMenuId() {
 		return menuId;
 	}
 	
