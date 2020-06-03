@@ -1,4 +1,4 @@
 select
 	/*%expand*/*
 from recipes
-where recipeId = /*recipeId*/'a'
+where recipe_id = /*recipeId*/'a'
