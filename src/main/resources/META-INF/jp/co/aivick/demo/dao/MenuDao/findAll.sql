@@ -1,3 +1,3 @@
 select
     /*%expand*/*
-from recipes
+from menus
