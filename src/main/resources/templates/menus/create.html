@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{menu.create}">メニュー登録</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+  <h2 th:text="#{menu.create}">メニュー登録</h2>
+
+  <form action="/menus/create" method="post" th:object="${menuForm}">
+
+    <ul>
+      <li th:each="error: ${#fields.detailedErrors()}" th:text="${error.message}">
+    </ul>
+
+    <span th:text="#{menuName}">メニュー名</span>:<input type="text" name="menuName" th:value="*{menuName}"><br/>
+    <span th:text="#{menuType}">メニューの分類</span>:<input type="text" name="menuType" th:value="*{menuType}"><br/>
+    <span th:text="#{menuPrice}">メニューの価格</span>:<input type="text" name="menuPrice" th:value="*{menuPrice}"><br/>
+    <button type="submit" th:text="#{register}">登録</button>
+  </form>
+</div>
+
+</body>
+</html>
