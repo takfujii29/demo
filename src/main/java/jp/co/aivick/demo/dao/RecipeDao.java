@@ -7,6 +7,7 @@ import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
 import org.seasar.doma.Update;
 import org.seasar.doma.boot.ConfigAutowireable;
+
 import jp.co.aivick.demo.entity.Recipe;
 
 @ConfigAutowireable
@@ -19,7 +20,9 @@ public interface RecipeDao {
 	@Select
 	List<Recipe> findAll();
 	
-
+	@Select
+ 	List<Recipe> search(String search);
+	
 	@Insert
 	int insert(Recipe recipe);
 
