@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import jp.co.aivick.demo.entity.Menu;
+import jp.co.aivick.demo.entity.Recipe;
 import jp.co.aivick.demo.form.MenuForm;
 import jp.co.aivick.demo.service.MenuService;
+import jp.co.aivick.demo.service.RecipeService;
+
 
 @Controller
 @RequestMapping("/menus")
@@ -25,6 +27,8 @@ public class MenuController {
 	
 	@Autowired
 	MenuService menuService;
+	@Autowired
+	RecipeService recipeService;
 	
 	  /**
 	   * selectの表示に使用するアイテム
@@ -32,9 +36,9 @@ public class MenuController {
 	  final static Map<String, String> SELECT_ITEMS =
 	    Collections.unmodifiableMap(new LinkedHashMap<String, String>() {
 	    {
-	      put("JapaneseFood", "和食");
-	      put("WesternFood", "洋食");
-	      put("ChineseFood", "中華");
+	      put("和食", "和食");
+	      put("洋食", "洋食");
+	      put("中華", "中華");
 	    }
 	  });
 	
@@ -51,6 +55,8 @@ public class MenuController {
 	public String showCreate(Model model) {
 		model.addAttribute("selectItems", SELECT_ITEMS);
 		model.addAttribute("menuForm", new MenuForm());
+		List<Recipe> recipeList = recipeService.findAll();
+		model.addAttribute("recipeList", recipeList);
 		return "menus/create.html";
 	}
 	
@@ -59,13 +65,10 @@ public class MenuController {
 		if (bindingResult.hasErrors()) {
 			return "menus/create.html";
 		}
-		Menu menu = new Menu();
-		menu.setMenuName(menuForm.getMenuName());
-		menu.setMenuType(menuForm.getMenuType());
-		menu.setMenuPrice(menuForm.getMenuPrice());
-		Menu createdMenu = menuService.create(menu);
+		Menu menu = new Menu(null, menuForm.getMenuName(), menuForm.getMenuType(), menuForm.getMenuPrice());
+		menuService.create(menu, menuForm.getRecipeList());
 		
-		return "redirect:/menus/update/" + createdMenu.getMenuId();
+		return "redirect:/";
 	}
 
 }
