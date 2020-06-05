@@ -54,9 +54,7 @@ public class RecipeController{
 
 		return "redirect:/recipes/update/" + createdRecipe.getRecipeId();
 	}
-	
-	
-
+		
 	@GetMapping("/search")
 	public String search(RecipeSearchForm recipeSearchForm, Model model) {
 
