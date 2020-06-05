@@ -20,6 +20,10 @@ public class RecipeService {
 	public List<Recipe> findAll() {
 		return this.recipeDao.findAll();
 	}
+	
+	public List<Recipe> search(String search) {
+		return this.recipeDao.search(search);
+	}
 
 	@Transactional
 	public Recipe create(Recipe recipe) {
