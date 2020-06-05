@@ -20,6 +20,8 @@ public class MenuForm {
 	@NotNull
 	private Integer menuPrice;
 	
+	private String[] recipeList;
+	
 	public void setMenuId(Integer menuId) {
 		this.menuId = menuId;
 	}
@@ -50,6 +52,14 @@ public class MenuForm {
 	
 	public Integer getMenuPrice() {
 		return menuPrice;
+	}
+
+	public String[] getRecipeList() {
+		return recipeList;
+	}
+
+	public void setRecipeList(String[] recipeList) {
+		this.recipeList = recipeList;
 	}
 
 }
