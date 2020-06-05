@@ -1,4 +1,4 @@
 select
 	/*%expand*/*
 from recipes
-where recipe_name LIKE /*%search*/*
+where recipe_name LIKE /* "%" + search + "%" */'a'
