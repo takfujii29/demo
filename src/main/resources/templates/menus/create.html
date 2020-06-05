@@ -21,14 +21,18 @@
     </ul>
 
     <span th:text="#{menuName}">メニュー名</span>:<input type="text" name="menuName" th:value="*{menuName}"><br/>
-     <label class="control-label" for="exampleSelect">Select</label>
+     <label class="control-label" for="exampleSelect">メニューの分類</label>
      <select class="form-control" id="exampleSelect" name="menuType">
        <option value="">---</option>
        <option th:each="item : ${selectItems}" th:value="${item.value}" th:text="${item.key}" th:selected="${item.value} == *{menuType}"></option>
-     </select>
+     </select><br/>
      <span th:if="${#fields.hasErrors('menuType')}" th:errors="*{menuType}" class="help-block">error!</span>
     <span th:text="#{menuPrice}">メニューの価格</span>:<input type="text" name="menuPrice" th:value="*{menuPrice}"><br/>
-    
+    <span th:text="#{recipe.list}">レシピの選択</span>
+    <div th:each="recipe : ${recipeList}" th:object="${recipe}">
+      <input type="checkbox" name="recipeList" th:value="*{recipeId}">
+      <a th:text="*{recipeName}"></a>
+    </div>
     <button type="submit" th:text="#{register}">登録</button>
   </form>
 </div>
