@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.aivick.demo.entity.Recipe;
 import jp.co.aivick.demo.form.RecipeForm;
+import jp.co.aivick.demo.form.RecipeSearchForm;
 import jp.co.aivick.demo.service.RecipeService;
 
 @Controller
@@ -53,7 +54,16 @@ public class RecipeController{
 
 		return "redirect:/recipes/update/" + createdRecipe.getRecipeId();
 	}
+	
+	
 
+	@GetMapping("/search")
+	public String search(RecipeSearchForm recipeSearchForm, Model model) {
+
+		List<Recipe> recipeList = recipeService.search(recipeSearchForm.getSearch());
+		model.addAttribute("recipeList", recipeList);
+		return "recipes/search.html";
+	}
 
     @GetMapping("/update/{recipeId}")
     public String showUpdate(@PathVariable("recipeId") String recipeId, Model model) {
