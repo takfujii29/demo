@@ -16,11 +16,7 @@
 
   <form action="/recipes/search" accept-charset="UTF-8" method="get" th:object="${recipeSearchForm}">
 
-    <!-- <ul>
-      <li th:each="error: ${#fields.detailedErrors()}" th:text="${error.message}">
-    </ul> -->
-
-    <span th:text="#{search}">検索</span>:<input type="text" name="search" th:value="*{search}" placeholder="検索ワード"><br/>
+    <span th:text="#{search}">検索</span>:<input type="search" name="search" th:value="*{search}" placeholder="検索ワード"><br/>
     <button type="submit" value="search" th:text="#{search}">検索</button>
   </form>
   

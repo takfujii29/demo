@@ -57,7 +57,11 @@ public class RecipeController{
 		
 	@GetMapping("/search")
 	public String search(RecipeSearchForm recipeSearchForm, Model model) {
-
+		
+		if(recipeSearchForm.getSearch() == null) {
+			return "recipes/search.html";
+		}
+		
 		List<Recipe> recipeList = recipeService.search(recipeSearchForm.getSearch());
 		model.addAttribute("recipeList", recipeList);
 		return "recipes/search.html";
