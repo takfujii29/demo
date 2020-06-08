@@ -30,7 +30,6 @@ public class RecipeController{
 
 		List<Recipe> recipes = recipeService.findAll();
 		model.addAttribute("recipes", recipes);
-
 		return "recipes/list.html";
 
 	}
@@ -58,24 +57,19 @@ public class RecipeController{
 	@GetMapping("/search")
 	public String search(RecipeSearchForm recipeSearchForm, Model model) {
 		
-		if(recipeSearchForm.getSearch() == null) {
+		if(recipeSearchForm.getSearch() != null && recipeSearchForm.getSearchCal() != null) {
 			return "recipes/list.html";
 		}
 		
-		List<Recipe> recipeList = recipeService.search(recipeSearchForm.getSearch());
-		model.addAttribute("recipeList", recipeList);
-		return "recipes/search.html";
-	}
-	
-	@GetMapping("/searchCal")
-	public String searchCal(RecipeSearchForm recipeSearchForm, Model model) {
-		
-		if(recipeSearchForm.getSearchCal() == null) {
-			return "recipes/list.html";
+		if(recipeSearchForm.getSearch() != null) {
+			List<Recipe> recipeList = recipeService.search(recipeSearchForm.getSearch());
+			model.addAttribute("recipeList", recipeList);
 		}
 		
-		List<Recipe> recipeListCal = recipeService.searchCal(recipeSearchForm.getSearchCal());
-		model.addAttribute("recipeListCal", recipeListCal);
+		if(recipeSearchForm.getSearchCal() != null) {
+			List<Recipe> recipeList = recipeService.searchCal(recipeSearchForm.getSearchCal());
+			model.addAttribute("recipeList", recipeList);
+		}
 		return "recipes/search.html";
 	}
 
