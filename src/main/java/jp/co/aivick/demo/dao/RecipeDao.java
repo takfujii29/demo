@@ -23,6 +23,9 @@ public interface RecipeDao {
 	@Select
  	List<Recipe> search(String search);
 	
+	@Select
+	List<Recipe> searchCal(Double searchCal);
+	
 	@Insert
 	int insert(Recipe recipe);
 

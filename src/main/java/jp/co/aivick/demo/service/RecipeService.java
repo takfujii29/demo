@@ -24,6 +24,10 @@ public class RecipeService {
 	public List<Recipe> search(String search) {
 		return this.recipeDao.search(search);
 	}
+	
+	public List<Recipe> searchCal(Double searchCal) {
+		return this.recipeDao.searchCal(searchCal);
+	}
 
 	@Transactional
 	public Recipe create(Recipe recipe) {

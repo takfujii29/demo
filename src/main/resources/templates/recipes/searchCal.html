@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{recipe.search}">レシピ検索</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+  <h2 th:text="#{recipe.search}">レシピ検索</h2>
+
+  <form action="/recipes/search" accept-charset="UTF-8" method="get" th:object="${recipeSearchForm}">
+    <span th:text="#{search}">検索</span>:<input type="search" name="search" th:value="*{search}" placeholder="検索ワード"><br/>
+    <button type="submit" value="search" th:text="#{search}">検索</button>
+  </form>
+    <form action="/recipes/searchCal" accept-charset="UTF-8" method="get" th:object="${recipeSearchForm}">
+    <span th:text="#{search}">検索</span>:<input type="search" name="searchCal" th:value="*{searchCal}" placeholder="数値（kcal）"><br/>
+    <button type="submit" value="searchCal" th:text="#{search}">検索</button>
+  </form>
+  
+  <h2 th:text="#{recipe.list}">レシピ一覧</h2>
+  
+  <table border="1" th:if="${recipeListCal !=null}">
+	  	<thead>
+	  		<tr>
+	          <th>レシピID</th>
+	          <th>レシピ名</th>
+	          <th>レシピカロリー</th>
+	  		</tr>
+	 	</thead>
+	 	<tbody>
+	 		<tr th:each="recipe : ${recipeListCal}">
+	 			<td th:text="${recipe.recipeId}"></td>
+	 			<td th:text="${recipe.recipeName}"></td>
+	 			<td th:text="${recipe.recipeCal}"></td>
+	 		</tr> 
+	 	</tbody>
+ 	</table>
+</div>
+
+</body>
+</html>
