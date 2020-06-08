@@ -21,7 +21,7 @@
     <div th:if="${#fields.hasErrors('recipeName')}" th:errors="*{recipeName}" th:errorclass="err"></div>
     <button type="submit" th:text="#{update}">更新</button>
   </form>
-
+  <a href="/recipes/list" th:text="#{return}">一覧に戻る</a>
 </div>
 </body>
 </html>
