@@ -23,14 +23,13 @@
 
 <div layout:fragment="content">
   <h2 th:text="#{menu.list}">メニュー一覧</h2>
-
   <table>
     <thead>
     <tr>
       <th th:text="#{menuId}">メニューID</th>
       <th th:text="#{menuName}">メニュー名</th>
       <th th:text="#{menuType}">メニューの分類</th>
-      <th th:text="#{menuPrice}">メニューカロリー</th>
+      <th th:text="#{menuPrice}">メニュー価格</th>
       <th></th>
     </tr>
     </thead>
@@ -44,6 +43,9 @@
         <a th:href="@{'/menus/update/' + *{menuId}}" th:text="#{update}">更新</a>
       </td>
     </tr>
+    <!-- <tr th:text="recipe : ${recipeList}" th:object="${recipe}">
+    	<td th:text="*{recipeCal}"></td>
+    </tr> -->
     </tbody>
   </table>
 </div>
