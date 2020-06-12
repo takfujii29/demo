@@ -57,7 +57,7 @@ public class RecipeController{
 	@GetMapping("/search")
 	public String search(RecipeSearchForm recipeSearchForm, Model model) {
 		
-		if(recipeSearchForm.getSearch() != null && recipeSearchForm.getSearchCal() != null) {
+		if(recipeSearchForm.getSearch() == null && recipeSearchForm.getSearchCal() == null) {
 			return "recipes/list.html";
 		}
 		
